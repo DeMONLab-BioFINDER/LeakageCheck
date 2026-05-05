@@ -165,9 +165,8 @@ function getSelectedInstructions() {
   return state.instructions.filter((instruction) => selectedIds.includes(instruction.id));
 }
 
-function buildPrompt(pageTitle, referenceText, methodText, selectedInstructions) {
+function buildPrompt(pageTitle, methodText, selectedInstructions) {
   const titleBlock = pageTitle.trim() || "LeakageCheck Prompt Builder";
-  const referenceBlock = referenceText || "[No reference information provided.]";
   const methodBlock =
     methodText.trim() || "[Paste the method section here before using this prompt.]";
   const roleBlock = state.role
@@ -188,9 +187,6 @@ function buildPrompt(pageTitle, referenceText, methodText, selectedInstructions)
     "",
     "Prompt title:",
     titleBlock,
-    "",
-    "Reference:",
-    referenceBlock,
     "",
     "Goal:",
     "Evaluate whether the method section shows clear leakage, likely leakage, possible leakage, or insufficient reporting to rule leakage out.",
@@ -221,17 +217,11 @@ function buildPrompt(pageTitle, referenceText, methodText, selectedInstructions)
 
 function updatePrompt() {
   const pageTitle = dom.pageTitleInput.value;
-  const referenceText = "DOI: https://doi.org/10.1038/s41591-026-04303-y";
   const methodText = dom.methodInput.value;
   const selectedInstructions = getSelectedInstructions();
   syncTitleFieldHeight();
   dom.methodStats.textContent = `${methodText.length.toLocaleString()} characters`;
-  dom.promptOutput.value = buildPrompt(
-    pageTitle,
-    referenceText,
-    methodText,
-    selectedInstructions
-  );
+  dom.promptOutput.value = buildPrompt(pageTitle, methodText, selectedInstructions);
   document.title = pageTitle.trim()
     ? `${pageTitle.trim()} | LeakageCheck`
     : "LeakageCheck Prompt Builder";
