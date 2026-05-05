@@ -326,11 +326,13 @@ async function init() {
     syncTitleFieldHeight();
     updatePrompt();
   } catch (error) {
-    dom.instructionStatus.textContent =
-      "Instruction loading failed. Serve the site over HTTP or GitHub Pages so fetch requests can load the markdown files.";
+    const detail =
+      error instanceof Error ? error.message : "Unknown error while loading instructions.";
+    console.error("Instruction loading failed.", error);
+    dom.instructionStatus.textContent = `Instruction loading failed. ${detail}`;
     dom.instructionStatus.className = "status error";
     dom.promptOutput.value =
-      "Instruction loading failed. Check instructions/manifest.json, instructions/role.md, and the markdown instruction files.";
+      "Instruction loading failed. Check instructions/manifest.json and confirm the instruction markdown files are published as static assets.";
   }
 }
 

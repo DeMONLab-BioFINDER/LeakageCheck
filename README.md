@@ -49,3 +49,7 @@ Example:
 ```bash
 python3 -m http.server 8000
 ```
+
+## GitHub Pages
+
+This repository includes a root `.nojekyll` file so GitHub Pages serves the markdown instruction files in `instructions/` as static assets. Without it, Pages may process those `.md` files and the frontend fetches for `instructions/*.md` can fail with `404`.
