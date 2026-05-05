@@ -1,0 +1,9 @@
+{
+  "roleFile": "role.md",
+  "instructions": [
+    { "file": "feature-leakage.md" },
+    { "file": "sample-leakage.md" },
+    { "file": "site-leakage.md" },
+    { "file": "model-leakage.md" }
+  ]
+}

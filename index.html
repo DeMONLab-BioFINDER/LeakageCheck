@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leakage check prompt builder</title>
+    <meta
+      name="description"
+      content="Build structured ChatGPT prompts to review method sections for information leakage."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="panel title-panel">
+        <a
+          class="source-badge"
+          href="https://github.com/DeMONLab-BioFINDER/LeakageCheck"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <svg
+            class="source-badge-icon"
+            viewBox="0 0 16 16"
+            aria-hidden="true"
+          >
+            <path
+              d="M8 0C3.58 0 0 3.67 0 8.2c0 3.63 2.29 6.7 5.47 7.78.4.08.55-.18.55-.39 0-.19-.01-.83-.01-1.5-2.01.38-2.53-.5-2.69-.96-.09-.24-.48-.96-.82-1.15-.28-.16-.68-.57-.01-.58.63-.01 1.08.59 1.23.84.72 1.26 1.87.9 2.33.68.07-.54.28-.9.5-1.11-1.78-.21-3.64-.92-3.64-4.07 0-.9.31-1.64.82-2.22-.08-.21-.36-1.05.08-2.19 0 0 .67-.22 2.2.85a7.35 7.35 0 0 1 4 0c1.53-1.07 2.2-.85 2.2-.85.44 1.14.16 1.98.08 2.19.51.58.82 1.31.82 2.22 0 3.16-1.87 3.86-3.65 4.07.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.47.55.39A8.23 8.23 0 0 0 16 8.2C16 3.67 12.42 0 8 0Z"
+            ></path>
+          </svg>
+          Source Code
+        </a>
+        <div class="title-grid">
+          <div class="title-copy">
+            <p class="eyebrow">DeMON Lab, Lund University</p>
+            <label class="sr-only" for="page-title-input">
+              Prompt builder title
+            </label>
+            <input
+              id="page-title-input"
+              class="title-input"
+              type="text"
+              placeholder="Enter a page title..."
+              value="Leakage Check Prompt Builder"
+            />
+            <p class="lede">
+              Paste a method section, select the checklist items, 
+              and generate a structured academic review prompt for potential leakage.
+            </p>
+            <p class="reference-line">
+              XX et al., 2026, XXX:
+              <a
+                class="reference-link"
+                href="https://www.demonlab.org"
+                target="_blank"
+                rel="noreferrer"
+              >
+                https://www.demonlab.org
+              </a>
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="panel input-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-kicker">Step 1</p>
+              <h2>Paste the method section</h2>
+            </div>
+            <p class="meta" id="method-stats">0 characters</p>
+          </div>
+          <label class="sr-only" for="method-input">Method section</label>
+          <textarea
+            id="method-input"
+            placeholder="Paste the method section here..."
+            spellcheck="true"
+          ></textarea>
+        </section>
+
+        <section class="panel instruction-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-kicker">Step 2</p>
+              <h2>Select leakage checks</h2>
+            </div>
+            <div class="toolbar">
+              <button type="button" class="ghost-button" id="select-all">
+                Select all
+              </button>
+              <button type="button" class="ghost-button" id="clear-all">
+                Clear
+              </button>
+            </div>
+          </div>
+          <p class="instruction-intro">
+            Select or unselect the instruction names below. The prompt still
+            uses the detailed markdown content from <code>/instructions</code>.
+          </p>
+          <div id="instruction-status" class="status">Loading instructions…</div>
+          <div id="instruction-list" class="instruction-list" aria-live="polite"></div>
+        </section>
+
+        <section class="panel output-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-kicker">Step 3</p>
+              <h2>Copy the generated prompt</h2>
+            </div>
+            <div class="toolbar">
+              <button type="button" class="accent-button" id="copy-prompt">
+                Copy prompt
+              </button>
+            </div>
+          </div>
+          <p class="instruction-intro">
+            The prompt updates live as the title, method text, and selected
+            checklist items change.
+          </p>
+          <label class="sr-only" for="prompt-output">Generated prompt</label>
+          <textarea id="prompt-output" readonly></textarea>
+          <p class="status" id="copy-status">Prompt not copied yet.</p>
+        </section>
+      </main>
+    </div>
+
+    <template id="instruction-template">
+      <label class="instruction-option">
+        <input type="checkbox" class="instruction-checkbox" />
+        <span class="instruction-title"></span>
+      </label>
+    </template>
+
+    <script src="./assets/js/app.js" defer></script>
+  </body>
+</html>
