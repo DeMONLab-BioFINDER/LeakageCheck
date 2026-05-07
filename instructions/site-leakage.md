@@ -5,8 +5,6 @@ summary: Check whether there is evidence of site leakage in the study design or 
 defaultSelected: true
 ---
 
-# Site Leakage
-
 ## What to check
 
 - Whether test site have been already used for model selection or hyperparameter tuning.
