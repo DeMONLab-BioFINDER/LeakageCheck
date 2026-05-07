@@ -119,10 +119,7 @@ async function loadPromptAssets() {
         file: entry.file,
         id: parsed.metadata.id || entry.file.replace(/\.md$/i, ""),
         title: parsed.metadata.title || entry.file,
-        category: parsed.metadata.category || "Uncategorized",
         summary: parsed.metadata.summary || "No summary provided.",
-        priority:
-          typeof parsed.metadata.priority === "number" ? parsed.metadata.priority : 999,
         defaultSelected:
           typeof parsed.metadata.defaultSelected === "boolean"
             ? parsed.metadata.defaultSelected
