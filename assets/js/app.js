@@ -174,7 +174,7 @@ function buildPrompt(pageTitle, methodText, selectedInstructions) {
       ? selectedInstructions
           .map(
             (instruction, index) =>
-              `${index + 1}. ${instruction.title}\nCategory: ${instruction.category}\nSummary: ${instruction.summary}\nChecklist details:\n${instruction.content}`
+              `${index + 1}. ${instruction.title}\nSummary: ${instruction.summary}\nDetails:\n${instruction.content}`
           )
           .join("\n\n")
       : "No checklist items were selected. Choose at least one leakage instruction before using this prompt.";
