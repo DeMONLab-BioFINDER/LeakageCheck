@@ -5,8 +5,6 @@ summary: Check wether there is evidence of feature leakage in the study design o
 defaultSelected: true
 ---
 
-# Feature Leakage
-
 ## What to check
 
 - Whether test set information was used during feature selection.
