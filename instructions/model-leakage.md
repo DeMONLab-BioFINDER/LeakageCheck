@@ -5,8 +5,6 @@ summary: Check whether there is evidence of model leakage in the study design or
 defaultSelected: true
 ---
 
-# Model Leakage
-
 ## What to check
 
 - Whether model tune or preprcessing step is performed on the test set.
