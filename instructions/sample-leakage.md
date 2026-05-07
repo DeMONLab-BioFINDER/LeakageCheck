@@ -5,8 +5,6 @@ summary: Check whether there is evidence of split leakage in the study design or
 defaultSelected: true
 ---
 
-# Split Leakage
-
 ## What to check
 
 - Whether no proper train/validation/test split was performed.
